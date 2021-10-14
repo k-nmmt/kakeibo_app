@@ -1,0 +1,2 @@
+class ExpendsController < ApplicationController
+end
