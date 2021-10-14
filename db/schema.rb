@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20211014071552) do
+ActiveRecord::Schema.define(version: 20211014081321) do
+
+  create_table "expends", force: :cascade do |t|
+    t.string "group"
+    t.integer "expend_amount"
+    t.date "expend_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "memo"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.integer "income_amount"
+    t.date "income_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "memo"
+  end
+
+  create_table "savings", force: :cascade do |t|
+    t.string "saving_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_savings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

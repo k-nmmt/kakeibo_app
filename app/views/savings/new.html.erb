@@ -1,0 +1,15 @@
+<h2>口座の登録、更新</h2>
+
+<%= form_with(model: @saving, local: true) do |f| %>
+  <div>
+    <%= f.text_field :saving_name %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<hr>
+<div>
+  <% @savings.each do |saving| %>
+    <p><%= saving.saving_name %></p>
+  <% end %>
+</div>

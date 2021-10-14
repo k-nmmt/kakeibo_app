@@ -1,0 +1,23 @@
+<%= form_with(model: @income, local: true) do |f| %>
+    <div>
+    <%= f.date_field :income_date %>
+  </div>
+   <div>
+    <%= f.text_field :income_amount %>
+  </div>
+  <div>
+    <%= f.text_field :memo %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<hr>
+<div>
+  <% @incomes.each do |income| %>
+    <p><%= income.income_date %>/
+    <%= income.income_amount %>/
+    <%= income.memo %>
+    </p>
+  <% end %>
+</div>

@@ -1,0 +1,27 @@
+<%= form_with(model: @expend, local: true) do |f| %>
+    <div>
+    <%= f.date_field :expend_date %>
+  </div>
+      <div>
+    <%= f.select :group, {'水道光熱費':1, '住居費':2, '食費':3, '生活雑費':4,'交友費':5,'その他':6 }%>
+  </div>
+   <div>
+    <%= f.text_field :expend_amount %>
+  </div>
+  <div>
+    <%= f.text_field :memo %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+<hr>
+<div>
+  <% @expends.each do |expend| %>
+    <p><%= expend.expend_date %>/
+    <%= expend.group%>/
+    <%= expend.expend_amount%> /
+    <%= expend.memo %>
+    <%= link_to("編集", "/expends/#{@expend.id}/edit") %></p>
+  <% end %>
+</div>

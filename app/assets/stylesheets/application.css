@@ -30,7 +30,7 @@
   }
 
   input[type="submit"] {
-    background-color: #FF5D57;
+    background-color: rgb(140, 140, 140);
     border-radius: 5px;
     color: white;
     padding: 10px;
