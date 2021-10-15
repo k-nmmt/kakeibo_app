@@ -10,6 +10,8 @@
 <hr>
 <div>
   <% @savings.each do |saving| %>
-    <p><%= saving.saving_name %></p>
+    <p>
+    <%= saving.id %>/
+    <%= saving.saving_name %></p>
   <% end %>
 </div>

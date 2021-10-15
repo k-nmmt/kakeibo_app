@@ -12,6 +12,7 @@ class ExpendsController < ApplicationController
     end
 
     def create
+     # binding.pry
         @expend = Expend.new(expend_params)
         if @expend.save
             flash[:notice] = "成功！"
@@ -38,8 +39,8 @@ class ExpendsController < ApplicationController
       end
       private
         def expend_params
-          params.require(:expend).permit(:expend_date, :group, :expend_amount, :memo)
+          params.require(:expend).permit(:saving_id,
+           :expend_date, :group, :expend_amount, :memo)
         end
         
-
 end

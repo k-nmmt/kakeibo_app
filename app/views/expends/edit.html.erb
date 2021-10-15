@@ -1,4 +1,8 @@
 <%= form_with(model: @expend, local: true) do |f| %>
+        <div><%= f.collection_select :saving_id,
+                       Saving.all,
+                       :id,
+                        :saving_name  %></div>
     <div>
     <%= f.date_field :expend_date %>
   </div>

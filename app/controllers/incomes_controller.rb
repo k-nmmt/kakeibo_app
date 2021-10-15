@@ -21,7 +21,7 @@ class IncomesController < ApplicationController
       end
       private
         def income_params
-          params.require(:income).permit(:income_date, :income_amount, :memo)
+          params.require(:income).permit(:saving_id, :income_date, :income_amount, :memo)
         end
 
 end
