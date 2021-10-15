@@ -11,7 +11,6 @@
 <% end %>
 
 <hr>
-
 <%= will_paginate %>
 <div>
   <% @expends.each do |expend| %>
@@ -21,8 +20,10 @@
     <%= expend.group%>/
     <%= expend.expend_amount%> /
     <%= expend.memo %>
+    <% if @expend.user_id == current_user.id %>
     <%= link_to("編集", "/expends/#{expend.id}/edit") %>
     <%= link_to("削除", "/expends/#{expend.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+    <% end %>
     </p>
   <% end %>
 </div>

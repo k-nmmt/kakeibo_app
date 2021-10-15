@@ -7,6 +7,7 @@
 <% end %>
 
 <hr>
+<% if @saving.user_id == current_user.id %>
 <%= will_paginate %>
 <div>
   <% @savings.each do |saving| %>
@@ -18,3 +19,4 @@
   <% end %>
 </div>
 <%= will_paginate %>
+<% end %>

@@ -12,6 +12,7 @@ class IncomesController < ApplicationController
 
     def create
         @income = Income.new(income_params)
+        @income.user_id = current_user.id
         if @income.save
             flash[:notice] = "成功！"
           redirect_to("/incomes/new")
@@ -46,7 +47,7 @@ class IncomesController < ApplicationController
 
       private
         def income_params
-          params.require(:income).permit(:saving_id, :income_date, :income_amount, :memo)
+          params.require(:income).permit(:saving_id, :user_id, :income_date, :income_amount, :memo)
         end
 
 end

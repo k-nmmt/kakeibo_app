@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
         has_many :savings
+        has_many :incomes
+        has_many :expends
 end

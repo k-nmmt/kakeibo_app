@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20211015054233) do
 
   create_table "expends", force: :cascade do |t|
+    t.integer "user_id"
     t.date "expend_date"
     t.integer "saving_id"
     t.string "group"
@@ -21,9 +22,11 @@ ActiveRecord::Schema.define(version: 20211015054233) do
     t.datetime "updated_at", null: false
     t.string "memo"
     t.index ["saving_id"], name: "index_expends_on_saving_id"
+    t.index ["user_id"], name: "index_expends_on_user_id"
   end
 
   create_table "incomes", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "saving_id"
     t.integer "income_amount"
     t.date "income_date"
@@ -31,6 +34,7 @@ ActiveRecord::Schema.define(version: 20211015054233) do
     t.datetime "updated_at", null: false
     t.string "memo"
     t.index ["saving_id"], name: "index_incomes_on_saving_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "savings", force: :cascade do |t|

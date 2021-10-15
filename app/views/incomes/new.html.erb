@@ -25,9 +25,11 @@
     <%= income.income_date %>/
     <%= income.income_amount %>/
     <%= income.memo %>
-        <%= link_to("編集", "/incomes/#{income.id}/edit") %>
-    <%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+    <% if @income.user_id == current_user.id %>
+      <%= link_to("編集", "/incomes/#{income.id}/edit") %>
+      <%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
+    <% end %>
     </p>
   <% end %>
-</div>
+ </div>
 <%= will_paginate %>

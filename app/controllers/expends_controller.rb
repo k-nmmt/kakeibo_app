@@ -1,6 +1,6 @@
 class ExpendsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :ensure_correct_user
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
     def index
         @test = "テスト支出"
     end
@@ -14,6 +14,7 @@ class ExpendsController < ApplicationController
     def create
      # binding.pry
         @expend = Expend.new(expend_params)
+        @expend.user_id = current_user.id
         if @expend.save
             flash[:notice] = "成功！"
           redirect_to("/expends/new")
@@ -47,16 +48,16 @@ class ExpendsController < ApplicationController
 
       private
         def expend_params
-          params.require(:expend).permit(:saving_id,
+          params.require(:expend).permit(:saving_id,:user_id,
            :expend_date, :group, :expend_amount, :memo)
         end
 
-        #def ensure_correct_user
-       #   @expend = Expend.find_by(id: params[:id])
-       #   if @saving.user_id != current_user.id
-       #    flash[:alert] = "権限がありません"
-       #    redirect_to("/expends/#{@expend.id}")
-       #   end
-       # end
+        def ensure_correct_user
+          @expend = Expend.find_by(id: params[:id])
+          if @expend.user_id != current_user.id
+          flash[:alert] = "権限がありません"
+           redirect_to("/expends/#{@expend.id}")
+          end
+        end
         
 end
