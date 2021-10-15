@@ -1,9 +1,8 @@
 <h2>口座の登録、更新</h2>
 
 <%= form_with(model: @saving, local: true) do |f| %>
-  <div>
-    <%= f.text_field :saving_name %>
-  </div>
+  <div><%= f.text_field :saving_name %></div>
+  <!--<div><%= f.text_field :income_amount %></div> -->
   <%= f.submit %>
 <% end %>
 
@@ -12,6 +11,8 @@
   <% @savings.each do |saving| %>
     <p>
     <%= saving.id %>/
-    <%= saving.saving_name %></p>
+    <%= saving.saving_name %>
+        <%= link_to("編集", "/savings/#{saving.id}/edit") %>
+    <%= link_to("削除", "/savings/#{saving.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></p>
   <% end %>
 </div>

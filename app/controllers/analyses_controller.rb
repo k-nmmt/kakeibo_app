@@ -1,5 +1,5 @@
 class AnalysesController < ApplicationController
     def show
-        @test = "テスト分析"
+        @expend = Expend.group("group").count
     end
 end

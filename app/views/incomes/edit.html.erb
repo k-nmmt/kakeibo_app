@@ -1,0 +1,9 @@
+<%= form_with(model: @income, path:"/incomes/:id") do |f| %>
+
+    <div><%= f.collection_select :saving_id,Saving.all, :id, :saving_name  %></div>
+    <div><%= f.date_field :income_date %></div>
+    <div><%= f.text_field :income_amount %></div>
+    <div><%= f.text_field :memo %></div>
+
+  <%= f.submit %>
+<% end %>

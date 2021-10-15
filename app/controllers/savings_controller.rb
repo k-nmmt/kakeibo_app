@@ -1,5 +1,6 @@
 class SavingsController < ApplicationController
-    def show
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    def index
         @test = "テスト　口座"
     end
 
@@ -13,12 +14,36 @@ class SavingsController < ApplicationController
         @saving.user_id = current_user.id
         if @saving.save
           flash[:notice] = "成功！"
-          redirect_to("/savings")
+          redirect_to("/savings/new")
         else
           flash.now[:alert] = "失敗！"
           render("savings/new")
         end
       end
+
+      def edit
+        @saving = Saving.find(params[:id])
+      end
+    
+      def update
+        @saving = Saving.find(params[:id])
+        if @saving.update(saving_params)
+          flash[:notice] = "成功！"
+          redirect_to("/savings/new")
+        else
+          flash.now[:alert] = "失敗！"
+          render("savings/edit")
+        end
+      end
+
+      def destroy
+        @saving = Saving.find(params[:id])
+        @saving.destroy
+        flash[:notice] = "成功！"
+        redirect_to("/savings/new")
+      end
+
+
 
       private
       def saving_params

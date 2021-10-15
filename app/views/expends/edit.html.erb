@@ -1,20 +1,10 @@
-<%= form_with(model: @expend, local: true) do |f| %>
-        <div><%= f.collection_select :saving_id,
-                       Saving.all,
-                       :id,
-                        :saving_name  %></div>
-    <div>
-    <%= f.date_field :expend_date %>
-  </div>
-      <div>
-    <%= f.select :group, {'水道光熱費':1, '住居費':2, '食費':3, '生活雑費':4,'交友費':5,'その他':6 }%>
-  </div>
-   <div>
-    <%= f.text_field :expend_amount %>
-  </div>
-  <div>
-    <%= f.text_field :memo %>
-  </div>
+<%= form_with(model: @expend, path:"/expends/:id") do |f| %>
+
+    <div><%= f.collection_select :saving_id,Saving.all, :id, :saving_name  %></div>
+    <div><%= f.date_field :expend_date %></div>
+    <div><%= f.select :group, {'水道光熱費':1, '住居費':2, '食費':3, '生活雑費':4,'交友費':5,'その他':6 }%></div>
+    <div><%= f.text_field :expend_amount %></div>
+    <div><%= f.text_field :memo %></div>
 
   <%= f.submit %>
 <% end %>

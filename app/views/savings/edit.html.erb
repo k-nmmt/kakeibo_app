@@ -1,0 +1,6 @@
+<%= form_with(model: @saving, path:"/savings/:id") do |f| %>
+
+    <div><%= f.text_field :saving_name %></div>
+
+  <%= f.submit %>
+<% end %>
