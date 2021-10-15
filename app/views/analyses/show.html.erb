@@ -1,1 +1,5 @@
 <%= pie_chart Expend.group(:group).count %>
+<hr>
+<%= column_chart Expend.group(:expend_date).sum(:expend_amount) %>
+<hr>
+<%= column_chart @income.group_by_month(:income_date).sum(:income_amount) %>

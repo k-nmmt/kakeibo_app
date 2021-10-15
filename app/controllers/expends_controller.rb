@@ -8,7 +8,7 @@ class ExpendsController < ApplicationController
 
     def new
         @expend = Expend.new
-        @expends = Expend.all
+        @expends =Expend.paginate(page:params[:page], per_page: 5)
     end
 
     def create

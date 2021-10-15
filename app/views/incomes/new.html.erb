@@ -17,6 +17,8 @@
 <% end %>
 
 <hr>
+
+<%= will_paginate %>
 <div>
   <% @incomes.each do |income| %>
     <p><%= income.saving_id%>/
@@ -28,3 +30,4 @@
     </p>
   <% end %>
 </div>
+<%= will_paginate %>

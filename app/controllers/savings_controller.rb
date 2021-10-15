@@ -6,7 +6,7 @@ class SavingsController < ApplicationController
 
     def new
         @saving = Saving.new
-        @savings = Saving.all
+        @savings = Saving.paginate(page:params[:page], per_page: 5)
     end
 
     def create

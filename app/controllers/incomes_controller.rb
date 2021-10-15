@@ -6,7 +6,8 @@ class IncomesController < ApplicationController
 
     def new
         @income = Income.new
-        @incomes = Income.all
+      #  @income = Income.all
+        @incomes = Income.paginate(page:params[:page], per_page: 5)
     end
 
     def create

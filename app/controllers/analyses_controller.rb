@@ -1,5 +1,5 @@
 class AnalysesController < ApplicationController
     def show
-        @expend = Expend.group("group").count
+     @income = Income.all
     end
 end

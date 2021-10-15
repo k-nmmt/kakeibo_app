@@ -3,7 +3,7 @@
 
     <div><%= f.collection_select :saving_id,Saving.all,:id,:saving_name  %></div>
     <div><%= f.date_field :expend_date %></div>
-    <div><%= f.select :group, {'水道光熱費':1, '住居費':2, '食費':3, '生活雑費':4,'交友費':5,'その他':6 }%></div>
+    <div><%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他' }%></div>
     <div><%= f.text_field :expend_amount %></div>
     <div><%= f.text_field :memo %></div>
 
@@ -11,6 +11,8 @@
 <% end %>
 
 <hr>
+
+<%= will_paginate %>
 <div>
   <% @expends.each do |expend| %>
     <p>
@@ -24,3 +26,4 @@
     </p>
   <% end %>
 </div>
+<%= will_paginate %>
