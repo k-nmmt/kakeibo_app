@@ -6,6 +6,7 @@ class SavingsController < ApplicationController
 
     def new
         @saving = Saving.new
+       #@income = Income.new
         @savings = Saving.paginate(page:params[:page], per_page: 5)
     end
 

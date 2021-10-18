@@ -1,5 +1,8 @@
-<%= pie_chart Expend.group(:group).count %>
+<h2>支出の内訳<h2>
+<%= pie_chart @expend.group(:group).count %>
 <hr>
-<%= column_chart Expend.group(:expend_date).sum(:expend_amount) %>
+<h2>支出の推移<h2>
+<%= column_chart @expend.group(:expend_date).sum(:expend_amount) %>
 <hr>
+<h2>収入の推移<h2>
 <%= column_chart @income.group_by_month(:income_date).sum(:income_amount) %>

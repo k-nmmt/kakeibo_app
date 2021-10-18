@@ -1,35 +1,26 @@
 <%= form_with(model: @income, local: true) do |f| %>
-       <div><%= f.collection_select :saving_id,
-                       Saving.all,
-                       :id,
-                        :saving_name  %></div>
-    <div>
-    <%= f.date_field :income_date %>
-  </div>
-   <div>
-    <%= f.text_field :income_amount %>
-  </div>
-  <div>
-    <%= f.text_field :memo %>
-  </div>
+
+   <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>
+   <div><%= f.date_field :income_date %></div>
+   <div><%= f.text_field :income_amount %></div>
+   <div><%= f.text_field :memo %></div>
 
   <%= f.submit %>
 <% end %>
 
-<hr>
 
+<hr>
 <%= will_paginate %>
 <div>
   <% @incomes.each do |income| %>
+    <% if income.user_id == current_user.id %>
     <p><%= income.saving_id%>/
     <%= income.income_date %>/
     <%= income.income_amount %>/
-    <%= income.memo %>
-    <% if @income.user_id == current_user.id %>
+    <%= income.memo %>/
       <%= link_to("編集", "/incomes/#{income.id}/edit") %>
       <%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-    <% end %>
-    </p>
+    </p> <% end %>
   <% end %>
  </div>
 <%= will_paginate %>

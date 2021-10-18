@@ -1,7 +1,7 @@
 
 <%= form_with(model: @expend, local:true) do |f| %>
 
-    <div><%= f.collection_select :saving_id,Saving.all,:id,:saving_name  %></div>
+    <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>
     <div><%= f.date_field :expend_date %></div>
     <div><%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他' }%></div>
     <div><%= f.text_field :expend_amount %></div>
@@ -14,17 +14,17 @@
 <%= will_paginate %>
 <div>
   <% @expends.each do |expend| %>
+    <% if expend.user_id == current_user.id %>
     <p>
     <%= expend.saving_id%>/
     <%= expend.expend_date %>/
     <%= expend.group%>/
     <%= expend.expend_amount%> /
     <%= expend.memo %>
-    <% if @expend.user_id == current_user.id %>
     <%= link_to("編集", "/expends/#{expend.id}/edit") %>
     <%= link_to("削除", "/expends/#{expend.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-    <% end %>
     </p>
+    <% end %>
   <% end %>
 </div>
 <%= will_paginate %>

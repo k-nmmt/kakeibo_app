@@ -8,7 +8,7 @@ class ExpendsController < ApplicationController
 
     def new
         @expend = Expend.new
-        @expends =Expend.paginate(page:params[:page], per_page: 5)
+        @expends =Expend.where(user_id:current_user.id).paginate(page:params[:page], per_page: 5)
     end
 
     def create
