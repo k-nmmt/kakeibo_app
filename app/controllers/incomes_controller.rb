@@ -7,6 +7,7 @@ class IncomesController < ApplicationController
     def new
         @income = Income.new
         @incomes = Income.where(user_id:current_user.id).paginate(page:params[:page], per_page: 5)
+       
     end
 
     def create

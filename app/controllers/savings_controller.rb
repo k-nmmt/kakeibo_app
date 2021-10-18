@@ -6,8 +6,7 @@ class SavingsController < ApplicationController
 
     def new
         @saving = Saving.new
-       #@income = Income.new
-        @savings = Saving.paginate(page:params[:page], per_page: 5)
+        @savings = Saving.where(user_id:current_user.id).paginate(page:params[:page], per_page: 5)
     end
 
     def create
@@ -43,7 +42,6 @@ class SavingsController < ApplicationController
         flash[:notice] = "成功！"
         redirect_to("/savings/new")
       end
-
 
 
       private

@@ -7,6 +7,18 @@
       <li>
         <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %>
       </li>
+       <li>
+        <%= link_to("収入", "/incomes/new") %>
+      </li>
+       <li>
+        <%= link_to("支出", "/expends/new") %>
+      </li>
+       <li>
+        <%= link_to("口座", "/savings/new") %>
+      </li>
+       <li>
+        <%= link_to("分析", "/analyses") %>
+      </li>
     <% else %>
       <li>
         <%= link_to("新規登録", "/users/sign_up") %>

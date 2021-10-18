@@ -1,11 +1,12 @@
 <%= form_with(model: @income, local: true) do |f| %>
 
+   <!-- <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>  -->
    <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>
    <div><%= f.date_field :income_date %></div>
    <div><%= f.text_field :income_amount %></div>
    <div><%= f.text_field :memo %></div>
 
-  <%= f.submit %>
+  <%= f.submit "登録"%>
 <% end %>
 
 
