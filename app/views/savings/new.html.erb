@@ -8,7 +8,10 @@
 
 
 <hr>
+<h3>口座一覧</h3>
 <%= will_paginate %>
+<br>
+口座ID/名前　
 <div>
   <% @savings.each do |saving| %>
     <% if saving.user_id == current_user.id %>

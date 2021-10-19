@@ -3,7 +3,7 @@
 
     <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>
     <div><%= f.date_field :expend_date %></div>
-    <div><%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他' }%></div>
+    <div><%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他','不明':'不明' }%></div>
     <div><%= f.text_field :expend_amount %></div>
     <div><%= f.text_field :memo %></div>
 
@@ -11,7 +11,11 @@
 <% end %>
 
 <hr>
+<h3>支出履歴</h3>
+
 <%= will_paginate %>
+<br>
+口座ID/　日付　/ グループ / 金額 /メモ
 <div>
   <% @expends.each do |expend| %>
     <% if expend.user_id == current_user.id %>

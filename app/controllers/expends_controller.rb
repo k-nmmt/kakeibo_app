@@ -11,6 +11,12 @@ class ExpendsController < ApplicationController
         @expends =Expend.where(user_id:current_user.id).paginate(page:params[:page], per_page: 5)
     end
 
+   # def search
+  #    @expends = Expend.search(params[:expend_date])
+   #   @expend_date = params[:expend_date]
+   #   render("expends/new")
+   # end
+
     def create
      # binding.pry
         @expend = Expend.new(expend_params)

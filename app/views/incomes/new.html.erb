@@ -1,6 +1,5 @@
 <%= form_with(model: @income, local: true) do |f| %>
 
-   <!-- <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>  -->
    <div><%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %></div>
    <div><%= f.date_field :income_date %></div>
    <div><%= f.text_field :income_amount %></div>
@@ -11,7 +10,10 @@
 
 
 <hr>
+<h3>収入履歴</h3>
 <%= will_paginate %>
+<br>
+口座ID/　日付　/　金額　/メモ
 <div>
   <% @incomes.each do |income| %>
     <% if income.user_id == current_user.id %>
