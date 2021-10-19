@@ -13,17 +13,22 @@
 <h3>収入履歴</h3>
 <%= will_paginate %>
 <br>
-口座ID/　日付　/　金額　/メモ
-<div>
-  <% @incomes.each do |income| %>
+ <table border="1">
+  <tr>
+ <th>口座ID</th>
+  <th>日付 </th>
+   <th>金額</th>
+    <th>メモ </th>
+     <th>編集 </th>
+      <th>削除 </th></tr>
+      <tr>
+ <% @incomes.each do |income| %>
     <% if income.user_id == current_user.id %>
-    <p><%= income.saving_id%>/
-    <%= income.income_date %>/
-    <%= income.income_amount %>/
-    <%= income.memo %>/
-      <%= link_to("編集", "/incomes/#{income.id}/edit") %>
-      <%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %>
-    </p> <% end %>
-  <% end %>
- </div>
+      <td><%= income.saving_id%></td>
+      <td><%= income.income_date %></td>
+      <td> <%= income.income_amount %></td>
+      <td><%= income.memo %></td>
+      <td><%= link_to("編集", "/incomes/#{income.id}/edit") %></td>
+      <td><%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>
+      </tr><% end %><% end %></table>
 <%= will_paginate %>

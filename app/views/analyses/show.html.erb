@@ -1,22 +1,25 @@
-<h2>収入の推移<h2>
-<%= column_chart @income.group_by_month(:income_date).sum(:income_amount) %>
-<hr>
-<h2>支出の推移<h2>
-<%= column_chart @expends.group_by_month(:expend_date).sum(:expend_amount) %>
-<hr>
-
-
 <div class="search-form">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
 
     <%= f.collection_select :expend_date, 
     Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
     :expend_date,
-    :expend_date %>
-    <%= f.submit "検索" %>
+    :expend_date,
+    include_blank:true,
+    prompt: "選択してください" %>
+    <%= f.submit "表示" %>
   <% end %>
 </div>
 
 <h2>支出の内訳<h2>
-<%= @expend_date %>
+<%= @expend_month %>
 <%= pie_chart @expend.group(:group).count %>
+<hr>
+
+<h2>収入の推移<h2>
+<%= column_chart @income.group_by_month(:income_date).sum(:income_amount) %>
+<hr>
+<h2>支出の推移<h2>
+<%= column_chart @expends.group_by_month(:expend_date).sum(:expend_amount) %>
+
+

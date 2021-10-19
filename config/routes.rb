@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
  #get "/savings", to:"savings#new"
  #post "/savings", to:"savings#create"
-resources :savings
+ get "/savings/:id/index", to:"savings#index"
+ resources :savings
 
   get "/analyses", to:"analyses#show"
 end
