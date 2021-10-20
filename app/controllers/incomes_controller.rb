@@ -6,7 +6,7 @@ class IncomesController < ApplicationController
 
     def new
         @income = Income.new
-        @incomes = Income.where(user_id:current_user.id).paginate(page:params[:page], per_page: 5)
+        @incomes = Income.where(user_id:current_user.id).paginate(page:params[:page], per_page: 10)
        
     end
 
@@ -46,7 +46,7 @@ class IncomesController < ApplicationController
 
       def search
         d = Date.parse(params[:income_date])
-        @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).search(params[:income_date]).paginate(page:params[:page], per_page: 5)
+        @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).search(params[:income_date]).paginate(page:params[:page], per_page: 10)
         render("incomes/new")
       end
 

@@ -15,3 +15,4 @@
 //= require_tree .
 //= require chartkick
 //= require Chart.bundle
+require("chartkick").use(require("highcharts"))
