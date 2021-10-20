@@ -54,7 +54,7 @@ class ExpendsController < ApplicationController
 
       def search
         d = Date.parse(params[:expend_date])
-        @expends = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).paginate(page:params[:page], per_page: 10)
+        @expends = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).where(saving_id:params[:id]).search(params[:expend_date]).paginate(page:params[:page], per_page: 10)
         render("expends/new")
       end
 
