@@ -17,6 +17,7 @@
 <th>名前</th>　
 <th>編集 </th>
 <th>削除 </th>
+<th>残高</th>
 </tr>
 <tr>
   <% @savings.each do |saving| %>
@@ -25,6 +26,7 @@
     <td><%= link_to(saving.saving_name, "/savings/#{saving.id}/index") %></td>
     <td><%= link_to("編集", "/savings/#{saving.id}/edit") %></td>
     <td><%= link_to("削除", "/savings/#{saving.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>
+    <td><%= Income.where(saving_id:saving.id).sum(:income_amount) - Expend.where(saving_id:saving.id).sum(:expend_amount) %></td>
     </tr>
     <% end %>
   <% end %>

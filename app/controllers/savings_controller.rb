@@ -2,8 +2,8 @@ class SavingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
     def index
         @test = "テスト　口座"
-        @saving = Saving.where(saving_id:params[:saving_id]).select("saving_name")
-        @saving_amount =  Income.all.where(saving_id:params[:saving_id]).sum(:income_amount) - Expend.where(saving_id:params[:saving_id]).sum(:expend_amount)
+        @saving = Saving.where(id:params[:id]).pluck(:saving_name).join("")
+        @saving_amount =  Income.where(saving_id:params[:id]).sum(:income_amount) - Expend.where(saving_id:params[:id]).sum(:expend_amount)
     end
 
     def new

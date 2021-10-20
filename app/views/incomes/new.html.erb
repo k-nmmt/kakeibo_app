@@ -27,7 +27,7 @@
 <br>
  <table border="1">
   <tr>
- <th>口座ID</th>
+ <th>口座名</th>
   <th>日付 </th>
    <th>金額</th>
     <th>メモ </th>
@@ -36,8 +36,8 @@
       <tr>
  <% @incomes.each do |income| %>
     <% if income.user_id == current_user.id %>
-      <td><%= income.saving_id%></td>
-      <td><%= income.income_date %></td>
+      <td><%= Saving.where(id:income.saving_id).pluck(:saving_name).join("")%></td>
+      <td><%= income.income_date.strftime("%Y年%-m月%-d日") %></td>
       <td> <%= income.income_amount %></td>
       <td><%= income.memo %></td>
       <td><%= link_to("編集", "/incomes/#{income.id}/edit") %></td>
