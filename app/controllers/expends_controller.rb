@@ -52,6 +52,12 @@ class ExpendsController < ApplicationController
         redirect_to("/expends/new")
       end
 
+      def search
+        d = Date.parse(params[:expend_date])
+        @expends = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).paginate(page:params[:page], per_page: 5)
+        render("expends/new")
+      end
+
       private
         def expend_params
           params.require(:expend).permit(:saving_id,:user_id,

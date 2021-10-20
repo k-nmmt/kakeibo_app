@@ -14,6 +14,5 @@ class AnalysesController < ApplicationController
         @expend = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date])
         @expend_month = Date.parse(params[:expend_date]).strftime("%-m月")
         render("analyses/show")
-        
       end
 end

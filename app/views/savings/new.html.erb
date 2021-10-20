@@ -1,7 +1,7 @@
 <h2>口座の登録、更新</h2>
 
 <%= form_with(model: @saving, local: true) do |f| %>
-  <%= f.text_field :saving_name %>
+ 口座名 <%= f.text_field :saving_name %>
 
   <%= f.submit "登録" %>
 <% end %>
@@ -16,7 +16,7 @@
 <th>口座ID</th>
 <th>名前</th>　
 <th>編集 </th>
-      <th>削除 </th>
+<th>削除 </th>
 </tr>
 <tr>
   <% @savings.each do |saving| %>

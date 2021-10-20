@@ -8,4 +8,8 @@ class Expend < ApplicationRecord
     def self.search(expend_date)
         where(["expend_date", "%#{expend_date}%"])
       end
+    
+    def expend_date_month
+      expend_date.strftime("%Y年%-m月")
+    end
 end

@@ -44,6 +44,12 @@ class IncomesController < ApplicationController
         redirect_to("/incomes/new")
       end
 
+      def search
+        d = Date.parse(params[:income_date])
+        @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).search(params[:income_date]).paginate(page:params[:page], per_page: 5)
+        render("incomes/new")
+      end
+
 
       private
         def income_params
