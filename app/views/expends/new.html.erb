@@ -1,5 +1,6 @@
 <h1>支出管理</h1>
 <hr>
+<h3>支出登録</h3>
 <%= form_with(model: @expend, local:true) do |f| %>
 
     口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 <br>

@@ -8,6 +8,10 @@ body{
   margin: 0;
 }
 
+h1{
+  text-align:left;
+}
+
 section {
   overflow: auto;
 }
@@ -32,7 +36,7 @@ textarea {
 
   table {
     border-collapse: collapse; 
-    width:80%;
+    width:100%;
     margin:auto;
   }
   
