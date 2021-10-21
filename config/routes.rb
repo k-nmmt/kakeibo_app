@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get "/users/:id", to: "users#show"
   get '/analyses/search', to:"analyses#search"
   get '/incomes/search', to:"incomes#search"
+  post '/incomes/search', to:"incomes#create"
   get '/expends/search', to:"expends#search"
+  post '/expends/search',to:"expends#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
 

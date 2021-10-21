@@ -1,23 +1,24 @@
-   <div class="search-form">
-<%= form_with url: analyses_search_path, method: :get, local: true do |f| %>
-<h4>口座 <%= f.collection_select :id,
+<h1>分析</h1>
+<hr>
+<div class="search-form">
+  <%= form_with url: analyses_search_path, method: :get, local: true do |f| %>
+   <h4>口座 <%= f.collection_select :id,
      Saving.where(user_id:[current_user.id]),
      :id,
      :saving_name,
-       prompt: "選択してください"%>
-</h4>
+      include_blank: false %>
+   </h4>
 
-<h4>年月 <%= f.collection_select :expend_date,
+   <h4>年月 <%= f.collection_select :expend_date,
     Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
     :expend_date,
     :expend_date_month,
-    prompt: "選択してください"%>
-</h4>
+    include_blank: false %>
+   </h4>
 
-  <%= f.submit "表示" %> 
-  <% end %></div>
-<h2>残高の推移<h2>
-<%= column_chart @saving_amount %> 
+　　　<%= f.submit "表示" %> 
+  <% end %>
+</div>
 
 <hr>
 <h2>支出の内訳</h2>
@@ -31,3 +32,7 @@
 <hr>
 <h2>支出の推移<h2>
 <%= column_chart @expends.group_by_month(:expend_date).sum(:expend_amount) %>
+
+<hr>
+<h2>残高の推移<h2>
+<%= column_chart @saving_amount %> 

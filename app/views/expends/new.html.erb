@@ -1,40 +1,41 @@
-
+<h1>支出管理</h1>
+<hr>
 <%= form_with(model: @expend, local:true) do |f| %>
 
-    口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %><br>
-    日付  <%= f.date_field :expend_date %><br>
-    種別  <%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他','不明':'不明' }%><br>
+    口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 <br>
+    日付  <%= f.date_field :expend_date, value:Date.today %><br>
+    種別  <%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他','不明':'不明' }%>　　　　　　 　 　　　 　　　　 <br>
     金額  <%= f.text_field :expend_amount %><br>
     メモ  <%= f.text_field :memo %><br>
 
-  <%= f.submit "登録"%>
+ 　　 <%= f.submit "登録"%>
 <% end %>
 
 <hr>
 <h3>支出履歴</h3>
-
+ 
    <div class="search-form">
 <%= form_with url: expends_search_path, method: :get, local: true do |f| %>
 <h4>口座 <%= f.collection_select :id,
      Saving.where(user_id:[current_user.id]),
      :id,
      :saving_name,
-       prompt: "選択してください"%>
+      include_blank: false %>
 </h4>
 
 <h4>年月 <%= f.collection_select :expend_date,
     Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
     :expend_date,
     :expend_date_month,
-    prompt: "選択してください"%>
+    include_blank: false %>
 </h4>
 
-  <%= f.submit "表示" %> 
+　　　<%= f.submit "表示" %> 
   <% end %></div>
-
+<h3><%= @expend_month %></h3>
 <%= will_paginate %>
 <br>
- <table border="1">
+<table class="table">
 <tr>
 <th>口座名</th>
 <th>日付</th>

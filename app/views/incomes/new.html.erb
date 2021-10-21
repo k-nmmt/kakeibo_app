@@ -1,55 +1,50 @@
+<h1>収入管理</h1>
+<hr>
 <%= form_with(model: @income, local: true) do |f| %>
 
-   口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %><br>
-   日付  <%= f.date_field :income_date %><br>
+   口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 
+   <br>
+   日付  <%= f.date_field :income_date , value:Date.today%><br>
    金額  <%= f.text_field :income_amount %><br>
    メモ  <%= f.text_field :memo %><br>
 
-  <%= f.submit "登録"%>
+  　 　<%= f.submit "登録"%>
 <% end %>
 
 
 <hr>
 <h3>収入履歴</h3>
 
-   <div class="search-form">
-<%= form_with url: incomes_search_path, method: :get, local: true do |f| %>
-<h4>口座 <%= f.collection_select :id,
-     Saving.where(user_id:[current_user.id]),
-     :id,
-     :saving_name,
-       prompt: "選択してください"%>
-</h4>
-
-<h4>年月 <%= f.collection_select :income_date,
-    Income.where(user_id:[current_user.id]).group_by_month(:income_date),
-    :income_date,
-    :income_date_month,
-    prompt: "選択してください"%>
-</h4>
-
-  <%= f.submit "表示" %> 
-  <% end %></div>
-
+<div class="search-form">
+  <%= form_with url: incomes_search_path, method: :get, local: true do |f| %>
+   <h4>口座 <%= f.collection_select :id, Saving.where(user_id:[current_user.id]), :id, :saving_name, include_blank: false %></h4>
+   <h4>年月 <%= f.collection_select :income_date, Income.where(user_id:[current_user.id]).group_by_month(:income_date), :income_date, :income_date_month, include_blank: false %></h4>
+ 　　　<%= f.submit "表示" %> 
+  <% end %>
+</div>
+<h3><%= @income_month %></h3>
 <%= will_paginate %>
 <br>
- <table border="1">
+<table class="table">
   <tr>
- <th>口座名</th>
-  <th>日付 </th>
-   <th>金額</th>
+    <th>口座名</th>
+    <th>日付 </th>
+    <th>金額</th>
     <th>メモ </th>
-     <th>編集 </th>
-      <th>削除 </th></tr>
+    <th>編集 </th>
+    <th>削除 </th></tr>
       <tr>
- <% @incomes.each do |income| %>
-    <% if income.user_id == current_user.id %>
+   <% @incomes.each do |income| %>
+     <% if income.user_id == current_user.id %>
       <td><%= Saving.where(id:income.saving_id).pluck(:saving_name).join("")%></td>
       <td><%= income.income_date.strftime("%Y年%-m月%-d日") %></td>
       <td> <%= income.income_amount %></td>
       <td><%= income.memo %></td>
       <td><%= link_to("編集", "/incomes/#{income.id}/edit") %></td>
       <td><%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>
-      </tr><% end %><% end %></table>
+      </tr>
+     <% end %>
+   <% end %>
+ </table>
 
 <%= will_paginate %>

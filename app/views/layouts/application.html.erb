@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html>
-  <head>
+  <html>
+   <head>
     <title>KakeiboApp</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.0/css/all.css">
   </head>
-
   <body>
-      <%= render 'layouts/header' %>
-    <p><%= notice %></p>
-    <p><%= alert %></p>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+     <p><%= notice %></p>
+     <p><%= alert %></p>
+     <%= yield %>
+     <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

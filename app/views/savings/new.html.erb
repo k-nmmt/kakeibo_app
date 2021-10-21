@@ -1,9 +1,10 @@
-<h2>口座の登録、更新</h2>
+<h1>口座管理</h1>
 
+<hr>
+<h3>口座登録</h3>
 <%= form_with(model: @saving, local: true) do |f| %>
  口座名 <%= f.text_field :saving_name %>
-
-  <%= f.submit "登録" %>
+<%= f.submit "登録" %>
 <% end %>
 
 
@@ -11,7 +12,7 @@
 <h3>口座一覧</h3>
 <%= will_paginate %>
 <br>
- <table border="1">
+<table class="table">
   <tr>
 <th>口座ID</th>
 <th>名前</th>　

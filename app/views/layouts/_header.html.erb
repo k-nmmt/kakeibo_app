@@ -1,23 +1,23 @@
 <header>
-  <div class="header-logo">
-      <h4><%= link_to("家計簿", "/") %></h4>
+ <div class="header-logo">
+   <h4><%= link_to("家計簿", "/") %></h4>
   </div>
   <ul>
     <% if user_signed_in? %>
        <li>
-       <h4><%= link_to("収入", "/incomes/new") %> <h4>
+       <h4><%= link_to("収入", "/incomes/new") %><h4>
       </li>
        <li>
-        <h4> <%= link_to("支出", "/expends/new") %> <h4>
+        <h4><%= link_to("支出", "/expends/new") %><h4>
       </li>
        <li>
-       <h4>  <%= link_to("口座", "/savings/new") %> <h4>
+       <h4><%= link_to("口座", "/savings/new") %><h4>
       </li>
        <li>
-      <h4>   <%= link_to("分析", "/analyses") %> <h4>
+      <h4><%= link_to("分析", "/analyses") %><h4>
       </li>
        <li>
-     <div class="log_out"> <h4>   <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %> <h4> </div>
+     <div class="log-out"><h4><%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %> <h4> </div>
       </li>
     <% else %>
       <li>

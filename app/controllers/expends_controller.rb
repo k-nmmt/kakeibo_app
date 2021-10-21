@@ -11,12 +11,6 @@ class ExpendsController < ApplicationController
         @expends =Expend.where(user_id:current_user.id).paginate(page:params[:page], per_page: 10)
     end
 
-   # def search
-  #    @expends = Expend.search(params[:expend_date])
-   #   @expend_date = params[:expend_date]
-   #   render("expends/new")
-   # end
-
     def create
      # binding.pry
         @expend = Expend.new(expend_params)
@@ -55,21 +49,20 @@ class ExpendsController < ApplicationController
       def search
         d = Date.parse(params[:expend_date])
         @expends = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).where(saving_id:params[:id]).search(params[:expend_date]).paginate(page:params[:page], per_page: 10)
+        @expend_month = Date.parse(params[:expend_date]).strftime("%-m月")
         render("expends/new")
       end
 
       private
         def expend_params
-          params.require(:expend).permit(:saving_id,:user_id,
-           :expend_date, :group, :expend_amount, :memo)
+          params.permit(:saving_id, :user_id, :expend_date, :group, :expend_amount, :memo)
         end
 
-        def ensure_correct_user
-          @expend = Expend.find_by(id: params[:id])
-          if @expend.user_id != current_user.id
-          flash[:alert] = "権限がありません"
-           redirect_to("/expends/#{@expend.id}")
-          end
-        end
+    #    def ensure_correct_user
+     #     @expend = Expend.find_by(id: params[:id])
+     #     if @expend.user_id != current_user.id
+      #    flash[:alert] = "権限がありません"
+       #  end
+       # end
         
 end

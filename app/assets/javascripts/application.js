@@ -16,3 +16,4 @@
 //= require chartkick
 //= require Chart.bundle
 require("chartkick").use(require("highcharts"))
+require("@fortawesome/fontawesome-free/js/all")

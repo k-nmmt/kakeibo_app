@@ -4,3 +4,15 @@
 input{
     margin:auto;
 }
+div{
+    display:inline-block;
+}
+body{
+    text-align:center;
+}
+
+input[type="button"] {
+    width: 200px;
+    padding:40px;
+    margin:10px;
+  }

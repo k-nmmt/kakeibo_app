@@ -2,6 +2,7 @@
   "name": "kakeibo_app",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "chart.js": "^3.5.1",
     "chartkick": "^4.0.5"
   }
