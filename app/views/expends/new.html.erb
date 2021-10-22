@@ -3,7 +3,7 @@
 <h3>支出登録</h3>
 <%= form_with(model: @expend, local:true) do |f| %>
 
-    口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 <br>
+    口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name %>　　　　　　 　 　　 　　　　 <br>
     日付  <%= f.date_field :expend_date, value:Date.today %><br>
     種別  <%= f.select :group, {'水道光熱費':'水道光熱費', '住居費':'住居費', '食費':'食費', '生活雑費':'生活雑費','交友費':'交友費','その他':'その他','不明':'不明' }%>　　　　　　 　 　　　 　　　　 <br>
     金額  <%= f.text_field :expend_amount %><br>
@@ -31,7 +31,7 @@
     include_blank: false %>
 </h4>
 
-　　　<%= f.submit "表示" %> 
+　　　<%= f.submit "検索" %> 
   <% end %></div>
 <h3><%= @expend_month %></h3>
 <%= will_paginate %>

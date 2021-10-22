@@ -1,13 +1,10 @@
 class IncomesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-    def index
-        @test = "テスト収入"
-    end
 
     def new
         @income = Income.new
         @incomes = Income.where(user_id:current_user.id).paginate(page:params[:page], per_page: 10)
-       
+        @income_month =nil
     end
 
     def create
@@ -18,6 +15,7 @@ class IncomesController < ApplicationController
           redirect_to("/incomes/new")
         else
             flash.now[:alert] = "失敗！"
+            @incomes = Income.where(user_id:current_user.id).paginate(page:params[:page], per_page: 10)
           render("incomes/new")
         end
       end
@@ -48,13 +46,13 @@ class IncomesController < ApplicationController
         d = Date.parse(params[:income_date])
         @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).where(saving_id:params[:id]).search(params[:income_date]).paginate(page:params[:page], per_page: 10)
         @income_month = Date.parse(params[:income_date]).strftime("%-m月")
+        @income = Income.new
         render("incomes/new")
       end
 
-
       private
         def income_params
-          params.permit(:saving_id, :user_id, :income_date, :income_amount, :memo)
+          params.require(:income).permit(:saving_id, :user_id, :income_date, :income_amount, :memo)
         end
 
 end

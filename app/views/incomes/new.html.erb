@@ -20,7 +20,7 @@
   <%= form_with url: incomes_search_path, method: :get, local: true do |f| %>
    <h4>口座 <%= f.collection_select :id, Saving.where(user_id:[current_user.id]), :id, :saving_name, include_blank: false %></h4>
    <h4>年月 <%= f.collection_select :income_date, Income.where(user_id:[current_user.id]).group_by_month(:income_date), :income_date, :income_date_month, include_blank: false %></h4>
- 　　　<%= f.submit "表示" %> 
+ 　　　<%= f.submit "検索" %> 
   <% end %>
 </div>
 <h3><%= @income_month %></h3>

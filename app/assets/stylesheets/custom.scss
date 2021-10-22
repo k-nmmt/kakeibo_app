@@ -48,6 +48,7 @@ textarea {
   
   input[type="checkbox"] {
     width: 15px;
+    text-align:left;
   }
 
   input[type="submit"] {
@@ -76,6 +77,8 @@ textarea {
     height: 65px;
     margin-top: 0;
   }
+
+
   
   header a {
     color: black;
@@ -92,9 +95,10 @@ textarea {
     text-decoration: none;
   }
 
-  .log-out{
-    text-align:right;
-  }
+  
+
+
+
 
 footer {
     margin-top: 45px;
@@ -118,4 +122,13 @@ footer {
         margin-left: 15px;
       }
     }
+  }
+
+  .field{
+text-align:left
+  }
+
+  .actions{
+    text-align:left
+
   }
