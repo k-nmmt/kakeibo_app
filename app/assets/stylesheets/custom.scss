@@ -9,7 +9,8 @@ body{
 }
 
 h1{
-  text-align:left;
+  padding:10px;
+  width:100%;
 }
 
 section {
@@ -67,7 +68,7 @@ textarea {
   li {
     list-style: none;
     float: left;
-    padding-right: 10px;
+    padding-right: 8px;
   }
   
   header {
@@ -75,6 +76,7 @@ textarea {
     background-color: #57ff8f;
     color: black;
     height: 65px;
+    width:100%;
     margin-top: 0;
   }
   .logout{
@@ -85,11 +87,12 @@ textarea {
   
   header a {
     color:black;
+
   }
   
   .header-logo {
     float: left;
-    padding-right: 20px;
+    padding-right: 15px;
     margin: 0;
     display:inline;
   }
@@ -98,6 +101,29 @@ textarea {
     text-decoration: none;
   }
 
+  .hov-income{
+    :hover{
+      color:rgb(57, 176, 57);
+    }
+  }
+
+  .hov-expend{
+    :hover{
+      color:rgb(250, 85, 85);
+    }
+  }
+
+  .hov-saving{
+    :hover{
+      color:rgb(26, 144, 174);
+    }
+  }
+
+  .hov-analyse{
+    :hover{
+      color:rgb(250, 180, 70);
+    }
+  }
 
 
 footer {

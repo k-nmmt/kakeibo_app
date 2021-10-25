@@ -20,6 +20,11 @@ class AnalysesController < ApplicationController
         d = Date.parse(params[:expend_date])
         @expend = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).where(saving_id:params[:id])
         @expend_month = Date.parse(params[:expend_date]).strftime("%-m月")
+        
+        if params[:id] 
+          @saving_name = "口座名：" + Saving.where(id:params[:id]).pluck(:saving_name).join("")
+        end
+
         @sum_of_expend = Expend.where(user_id:[current_user.id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).where(saving_id:params[:id]).sum(:expend_amount)
         income_hash = @income.group_by_month(:income_date).order(income_date: :ASC).sum(:income_amount)
         expends_hash = @expends.group_by_month(:expend_date).order(expend_date: :ASC).sum(:expend_amount).transform_values { |v| v * -1 }

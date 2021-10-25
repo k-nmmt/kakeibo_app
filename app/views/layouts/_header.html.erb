@@ -5,26 +5,26 @@
   <ul>
     <% if user_signed_in? %>
        <li>
-       <h4><%= link_to("収入", "/incomes/new") %></h4>
+       <div class="hov-income"><h4><%= link_to("収入", "/incomes/new") %></h4></div>
       </li>
        <li>
-        <h4><%= link_to("支出", "/expends/new") %></h4>
+        <div class="hov-expend"><h4><%= link_to("支出", "/expends/new") %></h4></div>
       </li>
        <li>
-       <h4><%= link_to("口座", "/savings/new") %></h4>
+       <div class="hov-saving"><h4><%= link_to("口座", "/savings/new") %></h4></div>
       </li>
        <li>
-      <h4><%= link_to("分析", "/analyses") %></h4>
+      <div class="hov-analyse"><h4><%= link_to("分析", "/analyses") %></h4></div>
       </li>
        
-     <div class="logout"><h4><%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %></h4></div>
+     <div class="logout"><h4><%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %><%= fa_icon 'sign-out-alt'%></h4></div>
       
     <% else %>
       <li>
-       <h4>  <%= link_to("新規登録", "/users/sign_up") %> </h4>
+       <h4>  <%= link_to("新規登録", "/users/sign_up") %><%= fa_icon 'user-plus'%> </h4>
       </li>
       <li>
-       <h4>  <%= link_to("ログイン", "/users/sign_in") %> </h4>
+       <h4>  <%= link_to("ログイン", "/users/sign_in") %><%= fa_icon 'sign-in-alt'%> </h4>
       </li>
     <% end %>
   </ul>
