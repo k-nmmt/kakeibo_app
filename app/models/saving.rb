@@ -6,5 +6,4 @@ class Saving < ApplicationRecord
 
     has_many :incomes, dependent: :destroy
     has_many :expends, dependent: :destroy
-   # accepts_nested_attributes_for :incomes, allow_destroy: true
 end

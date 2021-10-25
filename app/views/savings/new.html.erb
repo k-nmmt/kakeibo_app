@@ -3,9 +3,11 @@
 <hr>
 <h3>口座登録</h3>
 <%= form_with(model: @saving, local: true) do |f| %>
- 口座名 <%= f.text_field :saving_name %>
+ 口座名：<%= f.text_field :saving_name %><br>
 <%= f.submit "登録" %>
 <% end %>
+登録後は収入登録画面で、初期残高を登録してください。
+
 
 
 <hr>
@@ -26,7 +28,7 @@
     <td><%= saving.id %></td>
     <td><%= link_to(saving.saving_name, "/savings/#{saving.id}/index") %></td>
     <td><%= link_to("編集", "/savings/#{saving.id}/edit") %></td>
-    <td><%= link_to("削除", "/savings/#{saving.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>
+    <td><%= link_to("削除", "/savings/#{saving.id}", method: :delete, data: {confirm: "紐づいている収支情報も一緒に削除されます。本当に削除しますか？"}) %></td>
     <td><%= Income.where(saving_id:saving.id).sum(:income_amount) - Expend.where(saving_id:saving.id).sum(:expend_amount) %></td>
     </tr>
     <% end %>

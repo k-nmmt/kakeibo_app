@@ -77,11 +77,14 @@ textarea {
     height: 65px;
     margin-top: 0;
   }
-
+  .logout{
+    float: right;
+    text-align: right;
+  }
 
   
   header a {
-    color: black;
+    color:black;
   }
   
   .header-logo {
@@ -94,9 +97,6 @@ textarea {
   .header-logo a {
     text-decoration: none;
   }
-
-  
-
 
 
 
