@@ -1,6 +1,6 @@
 <div class="expend-title"><h1>支出管理</h1></div>
 <hr>
-<h3>支出登録</h3>
+<h2>支出登録</h2>
 <%= form_with(model: @expend, local:true) do |f| %>
 
     口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name %>　　　　　　 　 　　 　　　　 <br>
@@ -13,7 +13,7 @@
 <% end %>
 
 <hr>
-<h3>支出履歴</h3>
+<h2>支出履歴</h2>
  
    <div class="search-form">
 <%= form_with url: expends_search_path, method: :get, local: true do |f| %>

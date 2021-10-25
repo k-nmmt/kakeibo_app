@@ -1,6 +1,6 @@
 <div class="income-title"><h1>収入管理</h1></div>
 <hr>
-<h3>収入登録</h3>
+<h2>収入登録</h2>
 <%= form_with(model: @income, local: true) do |f| %>
 
    口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 
@@ -14,7 +14,7 @@
 
 
 <hr>
-<h3>収入履歴</h3>
+<h2>収入履歴</h2>
 
 <div class="search-form">
   <%= form_with url: incomes_search_path, method: :get, local: true do |f| %>

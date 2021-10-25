@@ -1,7 +1,7 @@
 <div class="saving-title"><h1>口座管理</h1></div>
 
 <hr>
-<h3>口座登録</h3>
+<h2>口座登録</h2>
 <%= form_with(model: @saving, local: true) do |f| %>
  口座名：<%= f.text_field :saving_name %>
 <%= f.submit "登録" %>
@@ -9,7 +9,7 @@
 ※登録後は収入登録画面で、初期残高を入力してください。
 
 <hr>
-<h3>口座一覧</h3>
+<h2>口座一覧</h2>
 <%= will_paginate %>
 <br>
 <table class="table">
