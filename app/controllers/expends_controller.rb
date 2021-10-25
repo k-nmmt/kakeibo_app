@@ -1,6 +1,6 @@
 class ExpendsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+ # before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
     def new
         @expend = Expend.new
@@ -53,14 +53,14 @@ class ExpendsController < ApplicationController
 
       private
         def expend_params
-          params.require(:expend).permit(:saving_id, :user_id, :expend_date, :group, :expend_amount, :memo,)
+          params.require(:expend).permit(:saving_id, :user_id, :expend_date, :group, :expend_amount, :memo)
         end
 
-        def ensure_correct_user
-         @expend = Expend.find_by(id: params[:id])
-         if @expend.user_id != current_user.id
-          flash[:alert] = "権限がありません"
-         end
-        end
+       # def ensure_correct_user
+        # @expend = Expend.find_by(id: params[:id])
+        # if @expend.user_id != current_user.id
+     #    flash[:alert] = "権限がありません"
+      #   end
+     #   end
         
 end
