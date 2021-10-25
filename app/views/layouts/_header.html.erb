@@ -2,6 +2,7 @@
  <div class="header-logo">
    <h4><%= link_to("家計簿", "/") %></h4>
   </div>
+
   <ul>
     <% if user_signed_in? %>
        <li>
@@ -16,8 +17,11 @@
        <li>
       <div class="hov-analyse"><h4><%= link_to("分析", "/analyses") %></h4></div>
       </li>
-       
-     <div class="logout"><h4><%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %><%= fa_icon 'sign-out-alt'%></h4></div>
+
+
+     <div class="logout">      <li>
+      <h4>User_name:"<%= User.where(id:current_user.id).pluck(:name).join("") %>"　
+       <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %><%= fa_icon 'sign-out-alt'%></h4></div>
       
     <% else %>
       <li>
@@ -28,4 +32,5 @@
       </li>
     <% end %>
   </ul>
+ 
 </header>

@@ -4,6 +4,7 @@ class Expend < ApplicationRecord
     
     validates :expend_amount, presence: true, length: { maximum: 100 }
     validates :saving_id, presence: true
+    validates :expend_date, presence: true
 
     def self.search(expend_date)
         where(["expend_date", "%#{expend_date}%"])

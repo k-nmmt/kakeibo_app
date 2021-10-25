@@ -4,6 +4,7 @@ class Income < ApplicationRecord
 
     validates :income_amount, presence: true, length: { maximum: 100 }
     validates :saving_id, presence: true
+    validates :income_date, presence: true
 
     def self.search(income_date)
         where(["income_date", "%#{income_date}%"])
