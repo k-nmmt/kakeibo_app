@@ -1,17 +1,17 @@
-<div class="analyse-title"><h1>分析</h1></div>
+<div class="analyse-title"><h1>　分析　</h1></div>
 
 <hr>
-
+<%= image_tag 'kabu_chart_woman.png',:size => '200x200' %>　
 <div class="search-form">
   <%= form_with url: analyses_search_path, method: :get, local: true do |f| %>
-   <h4>口座 <%= f.collection_select :id,
+   <h4>口座選択 <%= f.collection_select :id,
      Saving.where(user_id:[current_user.id]),
      :id,
      :saving_name,
       include_blank: false %>
    </h4>
 
-   <h4>年月 <%= f.collection_select :expend_date,
+   <h4>年月選択  <%= f.collection_select :expend_date,
     Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
     :expend_date,
     :expend_date_month,
@@ -23,17 +23,18 @@
 </div>
 <h1><%= @saving_name %></h1>
 <h1><%= @expend_month %>  総支出額：￥<%= @sum_of_expend %></h1>
-<h2>支出内訳</h2>
+<h2><%= @expend_month %>支出内訳</h2>
 <%= pie_chart @expend.group(:group).sum(:expend_amount) %>
 
 <hr>
 <h2>残高推移</h2>
  <%= column_chart  @arr_balence %>
-
+※カーソルを乗せると月毎の合計金額が表示されます
 <hr>
 <h2>収入推移</h2>
 <%= column_chart @income.group_by_month(:income_date).sum(:income_amount) %>
-
+※カーソルを乗せると月毎の合計金額が表示されます
 <hr>
 <h2>支出推移</h2>
 <%= column_chart @expends.group_by_month(:expend_date).sum(:expend_amount) %>
+※カーソルを乗せると月毎の合計金額が表示されます

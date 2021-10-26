@@ -1,12 +1,12 @@
-<div class="saving-title"><h1>口座管理</h1></div>
+<div class="saving-title"><h1>口座管理</h1></div><br>
+<%= image_tag 'character_atm.png',:size => '200x200' %>　
 
-<hr>
 <h2>口座登録</h2>
 <%= form_with(model: @saving, local: true) do |f| %>
  口座名：<%= f.text_field :saving_name %>
 <%= f.submit "登録" %>
 <% end %>
-※登録後は収入登録画面で、初期残高を入力してください。
+※登録後に移動する収入画面で、初期残高を入力してください。
 
 <hr>
 <h2>口座一覧</h2>

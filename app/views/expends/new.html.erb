@@ -1,5 +1,6 @@
 <div class="expend-title"><h1>支出管理</h1></div>
-<hr>
+<br>
+<%= image_tag 'money_saifu_kara_man.png',:size => '200x200' %>　
 <h2>支出登録</h2>
 <%= form_with(model: @expend, local:true) do |f| %>
 
@@ -33,7 +34,7 @@
 
 　　　<%= f.submit "検索" %> 
   <% end %></div>
-<h3><%= @expend_month %></h3>
+<h2><%= @expend_month %></h2>
 <%= will_paginate %>
 <br>
 <table class="table">

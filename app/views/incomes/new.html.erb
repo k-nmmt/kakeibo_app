@@ -1,5 +1,6 @@
 <div class="income-title"><h1>収入管理</h1></div>
-<hr>
+<%= image_tag 'kyuryou_bonus_woman2.png',:size => '200x200' %>　
+
 <h2>収入登録</h2>
 <%= form_with(model: @income, local: true) do |f| %>
 
@@ -23,7 +24,7 @@
  　　　<%= f.submit "検索" %> 
   <% end %>
 </div>
-<h3><%= @income_month %></h3>
+<h2><%= @income_month %></h2>
 
 <%= will_paginate %>
 <br>

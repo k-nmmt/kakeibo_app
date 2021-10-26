@@ -20,7 +20,7 @@
 
 
      <div class="logout">      <li>
-      <h4>User_name:"<%= User.where(id:current_user.id).pluck(:name).join("") %>"　
+      <h4>ユーザー名："<%= User.where(id:current_user.id).pluck(:name).join("") %>"　
        <%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %><%= fa_icon 'sign-out-alt'%></h4></div>
       
     <% else %>
