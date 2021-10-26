@@ -41,7 +41,7 @@
      <% if income.user_id == current_user.id %>
       <td><%= Saving.where(id:income.saving_id).pluck(:saving_name).join("")%></td>
       <td><%= income.income_date.strftime("%Y年%-m月%-d日") %></td>
-      <td> <%= income.income_amount %></td>
+      <td>￥<%= income.income_amount %></td>
       <td><%= income.memo %></td>
       <td><%= link_to("編集", "/incomes/#{income.id}/edit") %></td>
       <td><%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>

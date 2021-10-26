@@ -16,7 +16,7 @@ class SavingsController < ApplicationController
         @saving = Saving.new(saving_params)
         @saving.user_id = current_user.id
         if @saving.save
-          flash[:notice] = "成功！"
+          flash[:notice] = "成功！初期残高を入力しましょう！"
           redirect_to("/incomes/new")
         else
           flash.now[:alert] = "失敗！"

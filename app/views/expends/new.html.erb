@@ -53,7 +53,7 @@
     <td> <%= Saving.where(id:expend.saving_id).pluck(:saving_name).join("")%> </td>
     <td> <%= expend.expend_date.strftime("%Y年%-m月%-d日") %> </td>
     <td> <%= expend.group%> </td>
-    <td> <%= expend.expend_amount%>  </td>
+    <td>￥<%= expend.expend_amount%>  </td>
      <td><%= expend.memo %>
      <td><%= link_to("編集", "/expends/#{expend.id}/edit") %> </td>
      <td><%= link_to("削除", "/expends/#{expend.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %> </td>
