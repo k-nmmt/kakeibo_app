@@ -4,12 +4,6 @@
 input{
     margin:auto;
 }
-div{
-    display:inline-block;
-}
-body{
-    text-align:center;
-}
 
 input[type="button"] {
     width: 350px;
@@ -17,3 +11,8 @@ input[type="button"] {
     margin:10px;
     height:150px;
   }
+
+  .home{
+    text-align:center;
+    
+}

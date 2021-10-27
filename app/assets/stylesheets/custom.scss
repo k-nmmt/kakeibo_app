@@ -7,7 +7,7 @@
 body{
   margin: 0;
   background-color: #e8ffcd;
-  
+  padding-top:90px;
 }
 
 h1{
@@ -37,15 +37,10 @@ textarea {
 
 .container {
   width: 100%;
-  margin: 20px auto;
+  margin: auto;
+  text-align:center;
+  
 }
-
-
-  table {
-    border-collapse: collapse; 
-    width:100%;
-    margin:auto;
-  }
   
   input, textarea {
     box-sizing: border-box;
@@ -68,34 +63,45 @@ textarea {
   }
 
  ul {
-    margin: 0px;
+    margin:0px;
+    padding-top:10px;
   }
   
   li {
     list-style: none;
-    float: left;
+   
     padding-right: 8px;
   }
+
+ 
+
+
+  /* header */
   
   header {
     padding: 15px;
-    background-color: #57ff8f;
+   /* background-color: #57ff8f; */
     color: black;
-    height: 65px;
     width:100%;
-    margin-top: 0;
+    margin-top:0;
   }
-  .logout{
-    float: right;
-    text-align: right;
+  #logo {
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+    padding-top:5px;
+  }
+  
+  #logo:hover {
+    color: blue;
+    text-decoration: none;
   }
 
-  
-  header a {
-    color:black;
 
-  }
-  
   .header-logo {
     float: left;
     padding-right: 15px;
@@ -107,31 +113,45 @@ textarea {
     text-decoration: none;
   }
 
+  .navbar-toggle{
+
+     background-color:lightgray;
+    border:1px;
+
+  }
+
+ /* span.icon-bar{
+    color:black;
+  }  */
+
+/* home */
+
   .hov-income{
     :hover{
-      color:rgb(57, 176, 57);
+      background-color:rgb(57, 176, 57);
     }
   }
 
   .hov-expend{
     :hover{
-      color:rgb(250, 85, 85);
+      background-color:rgb(250, 85, 85);
     }
   }
 
   .hov-saving{
     :hover{
-      color:rgb(26, 144, 174);
+      background-color:rgb(32, 194, 235);
     }
   }
 
   .hov-analyse{
     :hover{
-      color:rgb(250, 180, 70);
+      background-color:rgb(250, 180, 70);
     }
   }
 
 
+  /* footer */
 footer {
     margin-top: 45px;
     padding-top: 5px;
@@ -156,11 +176,10 @@ footer {
     }
   }
 
-  .field{
-text-align:left
-  }
 
-  .actions{
-    text-align:left
-
+/* table */
+  table {
+    border-collapse: collapse; 
+    width:100%;
+    margin:auto;
   }
