@@ -66,21 +66,16 @@ textarea {
     margin:0px;
     padding-top:10px;
   }
-  
   li {
     list-style: none;
-   
     padding-right: 8px;
+    margin-right:2px;
   }
-
- 
-
 
   /* header */
   
   header {
-    padding: 15px;
-   /* background-color: #57ff8f; */
+    padding:15px 12px 15px 15px;
     color: black;
     width:100%;
     margin-top:0;
@@ -94,6 +89,7 @@ textarea {
     letter-spacing: -1px;
     font-weight: bold;
     padding-top:5px;
+    margin-top:10px;
   }
   
   #logo:hover {
@@ -114,42 +110,12 @@ textarea {
   }
 
   .navbar-toggle{
-
-     background-color:lightgray;
+    background-color:lightgray;
     border:1px;
-
-  }
-
- /* span.icon-bar{
-    color:black;
-  }  */
-
-/* home */
-
-  .hov-income{
-    :hover{
-      background-color:rgb(57, 176, 57);
+    .icon-bar{
+      background-color: gray;
     }
   }
-
-  .hov-expend{
-    :hover{
-      background-color:rgb(250, 85, 85);
-    }
-  }
-
-  .hov-saving{
-    :hover{
-      background-color:rgb(32, 194, 235);
-    }
-  }
-
-  .hov-analyse{
-    :hover{
-      background-color:rgb(250, 180, 70);
-    }
-  }
-
 
   /* footer */
 footer {
@@ -183,3 +149,25 @@ footer {
     width:100%;
     margin:auto;
   }
+
+  /*analyses*/
+  .inc-hst{
+    background-color:  rgb(44, 255, 79);
+  }
+
+.exp-hst{
+  background-color:rgb(252, 88, 88);
+}
+
+.sav-hst{
+  background-color:rgb(88, 192, 252);
+}
+
+
+p{
+  margin:10px;
+}
+
+.int{
+  text-align: right;
+}

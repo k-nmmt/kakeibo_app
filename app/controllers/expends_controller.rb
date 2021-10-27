@@ -13,7 +13,7 @@ class ExpendsController < ApplicationController
         @expend.user_id = current_user.id
         @expends = Expend.where(user_id:[current_user.id]).paginate(page:params[:page], per_page: 10)
         if @expend.save
-            flash[:notice] = "成功！"
+            flash[:notice] = "成功！#{Expend.where(user_id:current_user.id).pluck(:expend_date,:group,:expend_amount,:memo).last}"
           redirect_to("/expends/new")
         else
             flash.now[:alert] = "失敗！"
@@ -44,12 +44,17 @@ class ExpendsController < ApplicationController
       end
 
       def search
+        if params[:expend_date].empty?
+          flash[:alert] = "検索失敗　※項目を選択してください"
+          redirect_to("/expends/new")
+        else
         d = Date.parse(params[:expend_date])
         @expends = Expend.where(user_id:[current_user.id]).where(saving_id:params[:id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).paginate(page:params[:page], per_page: 10)
-        @expend_month = Date.parse(params[:expend_date]).strftime("%-m月")
+        @expend_month = Date.parse(params[:expend_date]).strftime("%-Y年%-m月")
         @expend = Expend.new
         render("expends/new")
       end
+    end
 
       private
         def expend_params

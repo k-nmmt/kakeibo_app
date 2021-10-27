@@ -1,4 +1,4 @@
-<header class="navbar navbar-default navbar-fixed-top" style="background-color:#57ff8f;">
+<header class="navbar navbar-fixed-top" style="background-color:#57ff8f;">
   <div class="container">
     <div class="navbar-header">
      <%= link_to "　家計簿", root_path, id: "logo" %>
@@ -13,11 +13,11 @@
       <ul class="nav navbar-nav navbar-right">
          <% if user_signed_in? %>
         
-        <li><div class="hov-income"><h4><%= link_to("収入",  "/incomes/new") %></div></h4></li>
-        <li><div class="hov-expend"><h4><%= link_to("支出",   "/expends/new") %></div></h4></li>
-        <li><div class="hov-saving"><h4><%= link_to("口座", "/savings/new")%></div></h4></li>
-        <li><div class="hov-analyse"><h4><%= link_to("分析", "/analyses")%></div></h4></li>
-        <li><h4>ユーザー名："<%= User.where(id:current_user.id).pluck(:name).join("") %>"</h4></li>
+        <li><a class="btn btn-success" href="/incomes/new" role="button">収入</a></li>
+        <li><a class="btn btn-danger" href="/expends/new" role="button">支出</a></li>
+        <li><a class="btn btn-info" href="/savings/new" role="button">口座</a></li>
+        <li><a class="btn btn-warning" href="/analyses" role="button">分析</a></li>
+        <li><h4>ユーザー名：<%= User.where(id:current_user.id).pluck(:name).join("") %></h4></li>
         <li><div class="logout"><h4><%= link_to("ログアウト", "/users/sign_out", method: :delete, data: {confirm: "本当にログアウトしますか？"}) %><%= fa_icon 'sign-out-alt'%></div></h4></li>
         <% else %>
         <li><h4><%= link_to("新規登録", "/users/sign_up") %><%= fa_icon 'user-plus'%></h4></li>

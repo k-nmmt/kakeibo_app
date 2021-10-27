@@ -22,14 +22,14 @@
      Saving.where(user_id:[current_user.id]),
      :id,
      :saving_name,
-      include_blank: false %>
+    prompt: "選択してください" %>
 </h4>
 
 <h4>年月 <%= f.collection_select :expend_date,
     Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
     :expend_date,
     :expend_date_month,
-    include_blank: false %>
+    prompt: "選択してください" %>
 </h4>
 
 　　　<%= f.submit "検索" %> 
@@ -46,7 +46,7 @@
 <th>金額</th>
 <th>メモ</th>
 <th>編集 </th>
-      <th>削除 </th>
+ <th>削除 </th>
 </tr><tr>
   <% @expends.each do |expend| %>
     <% if expend.user_id == current_user.id %>
@@ -54,7 +54,7 @@
     <td> <%= Saving.where(id:expend.saving_id).pluck(:saving_name).join("")%> </td>
     <td> <%= expend.expend_date.strftime("%Y年%-m月%-d日") %> </td>
     <td> <%= expend.group%> </td>
-    <td>￥<%= expend.expend_amount%>  </td>
+    <td><div class="int">￥<%= expend.expend_amount.to_s(:delimited)%></div></td>
      <td><%= expend.memo %>
      <td><%= link_to("編集", "/expends/#{expend.id}/edit") %> </td>
      <td><%= link_to("削除", "/expends/#{expend.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %> </td>

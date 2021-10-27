@@ -18,8 +18,8 @@
 
 <div class="search-form">
   <%= form_with url: incomes_search_path, method: :get, local: true do |f| %>
-   <h4>口座 <%= f.collection_select :id, Saving.where(user_id:[current_user.id]), :id, :saving_name, include_blank: false %></h4>
-   <h4>年月 <%= f.collection_select :income_date, Income.where(user_id:[current_user.id]).group_by_month(:income_date), :income_date, :income_date_month, include_blank: false %></h4>
+   <h4>口座 <%= f.collection_select :id, Saving.where(user_id:[current_user.id]), :id, :saving_name , prompt: "選択してください"%></h4>
+   <h4>年月 <%= f.collection_select :income_date, Income.where(user_id:[current_user.id]).group_by_month(:income_date), :income_date, :income_date_month , prompt: "選択してください"%></h4>
  　　　<%= f.submit "検索" %> 
   <% end %>
 </div>
@@ -40,7 +40,7 @@
      <% if income.user_id == current_user.id %>
       <td><%= Saving.where(id:income.saving_id).pluck(:saving_name).join("")%></td>
       <td><%= income.income_date.strftime("%Y年%-m月%-d日") %></td>
-      <td>￥<%= income.income_amount %></td>
+      <td><div class="int">￥<%= income.income_amount.to_s(:delimited) %></div></td>
       <td><%= income.memo %></td>
       <td><%= link_to("編集", "/incomes/#{income.id}/edit") %></td>
       <td><%= link_to("削除", "/incomes/#{income.id}", method: :delete, data: {confirm: "本当に削除しますか？"}) %></td>

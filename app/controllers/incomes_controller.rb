@@ -11,7 +11,7 @@ class IncomesController < ApplicationController
         @income = Income.new(income_params)
         @income.user_id = current_user.id
         if @income.save
-            flash[:notice] = "成功！"
+            flash[:notice] = "成功！#{Income.where(user_id:current_user.id).pluck(:income_date,:income_amount,:memo).last}"
           redirect_to("/incomes/new")
         else
             flash.now[:alert] = "失敗！"
@@ -43,11 +43,16 @@ class IncomesController < ApplicationController
       end
 
       def search
-        d = Date.parse(params[:income_date])
-        @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).where(saving_id:params[:id]).search(params[:income_date]).paginate(page:params[:page], per_page: 10)
-        @income_month = Date.parse(params[:income_date]).strftime("%-m月")
-        @income = Income.new
-        render("incomes/new")
+        if params[:income_date].empty?
+          flash[:alert] = "検索失敗　※項目を選択してください"
+          redirect_to("/incomes/new")
+        else
+          d = Date.parse(params[:income_date])
+          @incomes = Income.where(user_id:[current_user.id]).where(income_date: [d.beginning_of_month..d.end_of_month]).where(saving_id:params[:id]).search(params[:income_date]).paginate(page:params[:page], per_page: 10)
+          @income_month = Date.parse(params[:income_date]).strftime("%-Y年%-m月")
+          @income = Income.new
+          render("incomes/new")
+        end
       end
 
       private
