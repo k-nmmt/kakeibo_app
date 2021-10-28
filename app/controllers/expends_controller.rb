@@ -4,7 +4,7 @@ class ExpendsController < ApplicationController
 
     def new
         @expend = Expend.new
-        @expends = Expend.where(user_id:[current_user.id]).paginate(page:params[:page], per_page: 10)
+        @expends = Expend.where(user_id:[current_user.id]).reverse_order.paginate(page:params[:page], per_page: 10)
         @expend_month = nil
         @saving_name = "口座：" +Saving.where(id:params[:id]).pluck(:saving_name).join("")
     end
@@ -53,7 +53,7 @@ class ExpendsController < ApplicationController
           redirect_to("/expends/new")
         else
         d = Date.parse(params[:expend_date])
-        @expends = Expend.where(user_id:[current_user.id]).where(saving_id:params[:id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).paginate(page:params[:page], per_page: 10)
+        @expends = Expend.where(user_id:[current_user.id]).where(saving_id:params[:id]).where(expend_date: [d.beginning_of_month..d.end_of_month]).search(params[:expend_date]).reverse_order.paginate(page:params[:page], per_page: 10)
         @expend_month = Date.parse(params[:expend_date]).strftime("%-Y年%-m月")
         @expend = Expend.new
         @saving_name = "口座：" +Saving.where(id:params[:id]).pluck(:saving_name).join("")
