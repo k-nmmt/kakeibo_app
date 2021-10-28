@@ -1,7 +1,6 @@
 <%= form_with(model: @income, path:"/incomes/:id") do |f| %>
 
-   口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %>　　　　　　 　 　　 　　　　 
-   <br>
+   口座  <%= f.collection_select :saving_id,Saving.where(user_id:[current_user.id]),:id,:saving_name  %><br>
    日付  <%= f.date_field :income_date %><br>
    金額  <%= f.text_field :income_amount %><br>
    メモ  <%= f.text_field :memo %><br>

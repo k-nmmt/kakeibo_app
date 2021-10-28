@@ -1,6 +1,6 @@
 <%= form_with(model: @saving, path:"/savings/:id") do |f| %>
 
-    <div><%= f.text_field :saving_name %></div>
+   <div> 口座名：<%= f.text_field :saving_name %></div>
 
   <%= f.submit "更新"%>
 <% end %>

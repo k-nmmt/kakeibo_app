@@ -5,18 +5,10 @@
 <div class="search-form">
   <%= form_with url: analyses_search_path, method: :get, local: true do |f| %>
    <h4>口座選択 <%= f.collection_select :id,
-     Saving.where(user_id:[current_user.id]),
-     :id,
-     :saving_name,
-      include_blank: false %>
-   </h4>
+     Saving.where(user_id:[current_user.id]), :id, :saving_name, include_blank: false %></h4>
 
    <h4>年月選択  <%= f.collection_select :expend_date,
-    Expend.where(user_id:[current_user.id]).group_by_month(:expend_date),
-    :expend_date,
-    :expend_date_month,
-    include_blank: false %>
-   </h4>
+    Expend.where(user_id:[current_user.id]).group_by_month(:expend_date), :expend_date, :expend_date_month, prompt: "選択してください" %></h4>
 
 　　　<%= f.submit "表示" %> 
   <% end %>
@@ -27,8 +19,8 @@
 <%= pie_chart @expend.group(:group).sum(:expend_amount) %>
 
 <hr>
-<div class="sav-hst"><h3>残高推移</h3></div>
- <%= column_chart  @arr_balence %>
+<div class="sav-hst"><h3>収支推移</h3></div>
+ <%= column_chart  @arr_balance %>
 ※カーソルを乗せると月毎の合計金額が表示されます
 <hr>
 <div class="inc-hst"><h3>収入推移</h3></div>
