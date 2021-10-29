@@ -12,7 +12,7 @@ class AnalysesController < ApplicationController
       expends_hash = @expends.group_by_month(:expend_date).sum(:expend_amount).transform_values { |v| v * -1 }
       @arr_balance = income_hash.merge(expends_hash) { |key, vi, ve| vi + ve }
      # @balance = @arr_balance.each_value{ |v|
-     #    v = @arr_balance.values.size.times.map{|i| @arr_balance.values[0..i].inject(:+)} }
+     # v = @arr_balance.values.size.times.map{|i| @arr_balance.values[0..i].inject(:+)} }
       end
 
     def search
